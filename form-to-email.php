@@ -21,12 +21,12 @@ if(IsInjected($visitor_email))
     exit;
 }
 
-$email_from = 'tellmeapp@gmail.com';
+$email_from = 'tellmeappios@gmail.com';
 $email_subject = "Nova Mensagem - Suporte";
 $email_body = "O usuário $name enviou uma nova mensagem pelo site.\n".
     "Esta é a mensagem\n $message".
 
-$to = "tellmeapp@gmail.com";
+$to = "tellmeappios@gmail.com";
 $headers = "From: $email_from \r\n";
 $headers .= "Reply-To: $visitor_email \r\n";
 //Send the email!
