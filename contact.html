@@ -54,31 +54,31 @@ input[type=submit]:hover {
     <textarea id="subject" name="subject" placeholder="Digite algo..." style="height:200px"></textarea>
 
     <input type="submit" id="register" value="Enviar">
-
-    <script>
-      function validate(){
-        var at = document.getElementById("email").value.indexOf("@");
-        var message = document.getElementById("subject").value;
-        var fname = document.getElementById("fname").value;
-
-        if (fname.length == 0) {
-            alert("Digite seu nome...");
-            return false;
-        }
-        if (at == -1) {
-            alert("E-mail inválido!");
-            return false
-        }
-        if (message.length == 0){
-          alert("Digite uma mensagem");
-          return false;
-        }
-
-        return true;
-      }
-    </script>
   </form>
 </div>
+
+<script>
+  function validate(){
+    var at = document.getElementById("email").value.indexOf("@");
+    var message = document.getElementById("subject").value;
+    var fname = document.getElementById("fname").value;
+
+    if (fname.length == 0) {
+        alert("Digite seu nome...");
+        return false;
+    }
+    if (at == -1) {
+        alert("E-mail inválido!");
+        return false
+    }
+    if (message.length == 0){
+      alert("Digite uma mensagem");
+      return false;
+    }
+
+    return true;
+  }
+</script>
 
 </body>
 </html>
