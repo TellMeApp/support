@@ -58,7 +58,7 @@ input[type=submit]:hover {
 </div>
 
 <script>
-  function validate(){
+  function validate() {
     var at = document.getElementById("email").value.indexOf("@");
     var message = document.getElementById("subject").value;
     var fname = document.getElementById("fname").value;
@@ -67,11 +67,11 @@ input[type=submit]:hover {
       alert("Digite seu nome...");
       return false;
     }
-    if (at == -1) {
+    if (at === -1) {
         alert("E-mail inválido!");
         return false;
     }
-    if (message.length < 1){
+    if (message.length < 1) {
       alert("Digite uma mensagem");
       return false;
     }
