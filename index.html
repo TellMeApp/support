@@ -22,6 +22,12 @@
   </head>
   <body>
     <!-- Privacy Policy button -->
-    <button class="button" onclick="window.location.assign(https://tellmeapp.github.io/support/policy.htm)">Privacy Policy</button>
+    <button class="button" onclick="loadPolicy()">Privacy Policy</button>
   </body>
+
+  <script>
+    function loadPolicy(){
+      window.location.assign("https://tellmeapp.github.io/support/policy.htm");
+    }
+  </script>
 </html>
