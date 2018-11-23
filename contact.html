@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br" dir="ltr">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
@@ -43,41 +43,19 @@ input[type=submit]:hover {
 <h3>Formulário de Contato</h3>
 
 <div class="container">
-  <form action="https://formspree.io/tellmeappios@gmail.com" method="post" onsubmit="validate">
+  <form action="https://formspree.io/tellmeappios@gmail.com" method="post">
     <label for="fname">Nome Completo</label>
-    <input type="text" id="fname" name="fname" placeholder="Seu nome completo...">
+    <input type="text" id="fname" name="fname" placeholder="Seu nome completo..." required>
 
     <label for="email">E-mail</label>
-    <input type="text" id="email" name="email" placeholder="Seu e-mail...">
+    <input type="text" id="email" name="email" placeholder="Seu e-mail..." required>
 
     <label for="subject">Mensagem</label>
-    <textarea id="subject" name="subject" placeholder="Digite algo..." style="height:200px"></textarea>
+    <textarea id="subject" name="subject" placeholder="Digite algo..." style="height:200px" required></textarea>
 
     <input type="submit" value="Enviar">
   </form>
 </div>
-
-<script>
-  function validate() {
-    var at = document.getElementById("email").value.indexOf("@");
-    var message = document.getElementById("subject").value;
-    var fname = document.getElementById("fname").value;
-
-    if (fname.length < 1) {
-      alert("Digite seu nome...");
-      return false;
-    }
-    if (at === -1) {
-        alert("E-mail inválido!");
-        return false;
-    }
-    if (message.length < 1) {
-      alert("Digite uma mensagem");
-      return false;
-    }
-    return true;
-  }
-</script>
 
 </body>
 </html>
