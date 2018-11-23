@@ -5,29 +5,68 @@
     <title>TellMe - Suporte</title>
 
     <style>
-      .button{
-        background-color: #b00faa;
-        border: none;
-        color: white;
-        padding: 15px 25px;
-        text-align: center;
-        font-size: 15px;
-        cursor: pointer;
+      body, html{
+        height: 100%;
+        margin: 0;
+        font-family: Helvetica;
       }
-      .button:hover {
+
+      .tablink{
+        background-color: #b00faa;
+        color: white;
+        border: none;
+        float: left;
+        outline: none;
+        padding: 14px 16px;
+        text-align: center;
+        font-size: 17px;
+        width: 50%;
+      }
+      .tablink:hover {
         background-color: #780774;
       }
+
+      .tabcontent{
+        color: white;
+        display: none;
+        padding: 100px 20px;
+        height: 100%;
+      }
+
+      #Privacy {background-color: white;}
+      #Contact {background-color: green;}
     </style>
 
   </head>
   <body>
-    <!-- Privacy Policy button -->
-    <button class="button" onclick="loadPolicy()">Privacy Policy</button>
+    <button class="tablink" onclick="openPage('Privacy', this, 'white')" id="defaultOpen">Privacy Policy</button>
+    <button class="tablink" onclick="openPage('Contact', this, 'green')">Contact Us</button>
+
+    <div id="Privacy" class="tabcontent">
+      <h1>Privacy Policy</h1>
+    </div>
+
+    <div id="Contact" class="tabcontent">
+      <h1>Contact Us</h1>
+    </div>
   </body>
 
   <script>
-    function loadPolicy(){
-      window.location.assign("https://tellmeapp.github.io/support/policy.htm");
+    function openPage(pageName, element, color){
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName('tabcontent');
+      for(i=0;i<tabcontent.length;i++){
+        tabcontent[i].style.display = "none";
+      }
+
+      tablinks = document.getElementsByClassName('tablink');
+      for(i=0; i<tablinks.length; i++){
+        tablinks[i].style.backgroundColor = "";
+      }
+
+      document.getElementById(pageName).style.display = "block";
+      element.style.backgroundColor = color;
+      document.getElementById('defaultOpen').click();
     }
   </script>
 </html>
