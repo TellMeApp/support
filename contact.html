@@ -63,20 +63,24 @@ input[type=submit]:hover {
     var message = document.getElementById("subject").value;
     var fname = document.getElementById("fname").value;
 
-    if (fname.length == 0) {
-        alert("Digite seu nome...");
-        return false;
+    if (fname.length>0) {
+        return true;
+    }else{
+      alert("Digite seu nome...");
+      return false;
     }
-    if (at == -1) {
+    if (at==-1) {
         alert("E-mail inválido!");
         return false;
+    }else{
+      return true;
     }
-    if (message.length == 0){
+    if (message.length>0){
+      return true;
+    }else{
       alert("Digite uma mensagem");
       return false;
     }
-
-    return true;
   }
 </script>
 
