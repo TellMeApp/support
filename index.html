@@ -1,10 +1,12 @@
 </<!DOCTYPE html>
 <html lang="pt-br" dir="ltr">
   <head>
-    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>TellMe - Suporte</title>
 
     <style>
+      * {box-sizing: border-box}
+
       body, html{
         height: 100%;
         margin: 0;
@@ -35,89 +37,86 @@
       }
 
       .tabcontent{
-        color: white;
+        color: black;
         display: none;
         padding: 100px 20px;
         height: 100%;
       }
 
       #Privacy {background-color: white;}
-      #Contact {background-color: green;}
+      #Contact {background-color: white;}
     </style>
 
   </head>
+
   <body>
     <!-- Header -->
     <div class="header">
       <h1>TellMe App</h1>
     </div>
 
+
     <!-- Botões da Tab Bar -->
-    <button class="tablink" onclick="openPage('Privacy', this, 'yellow')" id="defaultOpen">Privacy Policy</button>
-    <button class="tablink" onclick="openPage('Contact', this, 'green')">Contact Us</button>
+    <button class="tablink" onclick="openPage('Privacy', this, '#b00faa')" id="defaultOpen">Privacy Policy</button>
+    <button class="tablink" onclick="openPage('Contact', this, '#b00faa')">Contact Us</button>
 
     <!-- Conteudo de cada tab -->
     <div id="Privacy" class="tabcontent">
-      <h1>Privacy Policy</h1>
-      <div w3-include-html="policy.html"></div>
-    </div>
+    <div w3-include-html="h1.html"></div>
+	  </div>
 
     <div id="Contact" class="tabcontent">
       <h1>Contact Us</h1>
     </div>
 
     <script>
+      // Troca o conteudo da tab
+      function openPage(pageName, element, color){
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName('tabcontent');
+        for(i=0;i<tabcontent.length;i++){
+          tabcontent[i].style.display = "none";
+        }
+
+        tablinks = document.getElementsByClassName('tablink');
+        for(i=0; i<tablinks.length; i++){
+          tablinks[i].style.backgroundColor = "";
+        }
+
+        document.getElementById(pageName).style.display = "block";
+        element.style.backgroundColor = color;
+      }
+      document.getElementById('defaultOpen').click();
+
+      function includeHTML() {
+        var z, i, elmnt, file, xhttp;
+        /*loop through a collection of all HTML elements:*/
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+          elmnt = z[i];
+          /*search for elements with a certain atrribute:*/
+          file = elmnt.getAttribute("w3-include-html");
+          if (file) {
+            /*make an HTTP request using the attribute value as the file name:*/
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+              if (this.readyState == 4) {
+                if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+                if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+                /*remove the attribute, and call this function once more:*/
+                elmnt.removeAttribute("w3-include-html");
+                includeHTML();
+              }
+            }
+            xhttp.open("GET", file, true);
+            xhttp.send();
+            /*exit the function:*/
+            return;
+          }
+        }
+      }
+      // Calls method
       includeHTML();
     </script>
   </body>
-
-  <!-- Scripts -->
-  <script>
-    // Troca o conteudo da tab
-    function openPage(pageName, element, color){
-      var i, tabcontent, tablinks;
-      tabcontent = document.getElementsByClassName('tabcontent');
-      for(i=0;i<tabcontent.length;i++){
-        tabcontent[i].style.display = "none";
-      }
-
-      tablinks = document.getElementsByClassName('tablink');
-      for(i=0; i<tablinks.length; i++){
-        tablinks[i].style.backgroundColor = "";
-      }
-
-      document.getElementById(pageName).style.display = "block";
-      element.style.backgroundColor = color;
-      document.getElementById('defaultOpen').click();
-    }
-
-    // HTML Include script
-    function includeHTML(){
-      var z, i, element, file, xhttp;
-
-      z=document.getElementsByTagName('*');
-      for(i=0;i<z.length;i++){
-        element z[i];
-        file = element.getAttribute("w3-include-html");
-        if(file){
-          xhttp = new XMLHttpRequest();
-          xhttp.onreadystatechange = function(){
-            if(this.readyState == 4){
-              if(this.status == 200){
-                element.innerHTML = this.responseText;
-              }
-              if(this.status == 404){
-                element.innerHTML = "Page not Found.";
-              }
-            }
-            element.removeAttribute("w3-include-html");
-            includeHTML();
-          }
-          xhttp.open("GET", file, true);
-          xhttp.send();
-          return;
-        }
-      }
-    }
-  </script>
 </html>
